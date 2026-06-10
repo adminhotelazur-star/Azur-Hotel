@@ -76,100 +76,115 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* 2. Champs avec lignes de séparation verticales */}
-            <div className="flex-1 flex flex-col xl:flex-row divide-y xl:divide-y-0 xl:divide-x divide-cream/10 w-full min-w-0">
-              
-              <Field label="Arrivée" className="xl:pl-5">
-                <input
-                  type="date"
-                  value={arr}
-                  onChange={(e) => setArr(e.target.value)}
-                  className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
-                />
-              </Field>
+            {/* 2. Champs en grille 2 colonnes (mobile) / rangée horizontale (desktop) */}
+            <div className="flex-1 flex flex-col w-full min-w-0">
+              <div className="grid grid-cols-2 xl:flex xl:flex-row xl:divide-x divide-cream/10 w-full min-w-0">
+                
+                <Field label="Arrivée" className="xl:pl-5 border-b border-cream/10 xl:border-b-0">
+                  <input
+                    type="date"
+                    value={arr}
+                    onChange={(e) => setArr(e.target.value)}
+                    className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
+                  />
+                </Field>
 
-              <Field label="Départ">
-                <input
-                  type="date"
-                  value={dep}
-                  onChange={(e) => setDep(e.target.value)}
-                  className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
-                />
-              </Field>
+                <Field label="Départ" className="border-b border-cream/10 xl:border-b-0">
+                  <input
+                    type="date"
+                    value={dep}
+                    onChange={(e) => setDep(e.target.value)}
+                    className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
+                  />
+                </Field>
 
-              <Field label="Catégorie">
-                <div className="relative w-full">
-                  <select
-                    value={room}
-                    onChange={(e) => setRoom(e.target.value)}
-                    className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-5"
+                <Field label="Catégorie" className="border-b border-cream/10 xl:border-b-0">
+                  <div className="relative w-full">
+                    <select
+                      value={room}
+                      onChange={(e) => setRoom(e.target.value)}
+                      className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-5"
+                    >
+                      <option className="bg-canvas">Single Room</option>
+                      <option className="bg-canvas">Single Deluxe</option>
+                      <option className="bg-canvas">Double Room</option>
+                      <option className="bg-canvas">Double Deluxe</option>
+                      <option className="bg-canvas">Triple</option>
+                      <option className="bg-canvas">Twin</option>
+                    </select>
+                    <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none w-3.5 h-3.5 text-cream/45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </Field>
+
+                <Field label="Adultes" className="border-b border-cream/10 xl:border-b-0">
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setAdults(Math.max(1, adults - 1))}
+                      className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                    >
+                      −
+                    </button>
+                    <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{adults}</span>
+                    <button
+                      type="button"
+                      onClick={() => setAdults(adults + 1)}
+                      className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                    >
+                      +
+                    </button>
+                  </div>
+                </Field>
+
+                <Field label="Enfants" className="xl:pr-4">
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setChildren(Math.max(0, children - 1))}
+                      className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                    >
+                      −
+                    </button>
+                    <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{children}</span>
+                    <button
+                      type="button"
+                      onClick={() => setChildren(children + 1)}
+                      className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                    >
+                      +
+                    </button>
+                  </div>
+                </Field>
+
+                {/* Cellule vide pour maintenir la grille 2 colonnes */}
+                <div className="xl:hidden px-3 py-3" />
+
+                {/* Bouton mobile plein largeur */}
+                <div className="col-span-2 xl:hidden px-3 py-3 border-t border-cream/10">
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="w-full bg-cream text-canvas rounded-[2rem] px-5 py-3 min-h-[50px] font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
                   >
-                    <option className="bg-canvas">Single Room</option>
-                    <option className="bg-canvas">Single Deluxe</option>
-                    <option className="bg-canvas">Double Room</option>
-                    <option className="bg-canvas">Double Deluxe</option>
-                    <option className="bg-canvas">Triple</option>
-                    <option className="bg-canvas">Twin</option>
-                  </select>
-                  <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none w-3.5 h-3.5 text-cream/45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
+                    <span>Vérifier les disponibilités</span>
+                    <span className="text-base leading-none mb-0.5">→</span>
+                  </button>
                 </div>
-              </Field>
+              </div>
 
-              {/* Adultes - Boutons ronds plus petits (w-8 h-8 = 32px) */}
-              <Field label="Adultes">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setAdults(Math.max(1, adults - 1))}
-                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
-                  >
-                    −
-                  </button>
-                  <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{adults}</span>
-                  <button
-                    type="button"
-                    onClick={() => setAdults(adults + 1)}
-                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
-                  >
-                    +
-                  </button>
-                </div>
-              </Field>
-
-              {/* Enfants - Boutons ronds plus petits */}
-              <Field label="Enfants" className="xl:pr-4">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setChildren(Math.max(0, children - 1))}
-                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
-                  >
-                    −
-                  </button>
-                  <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{children}</span>
-                  <button
-                    type="button"
-                    onClick={() => setChildren(children + 1)}
-                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
-                  >
-                    +
-                  </button>
-                </div>
-              </Field>
-            </div>
-
-            {/* 3. Le bouton massif à droite - Paddings et textes réduits */}
-            <div className="mt-2 xl:mt-0 xl:ml-2 shrink-0">
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className="w-full xl:w-auto h-full min-h-[50px] md:min-h-[56px] bg-cream text-canvas rounded-[2rem] px-5 xl:px-6 font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
-              >
-                <span>Vérifier les disponibilités</span>
-                <span className="text-base leading-none mb-0.5">→</span>
-              </button>
+              {/* Bouton desktop latéral */}
+              <div className="hidden xl:block mt-2 xl:mt-0 xl:ml-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="w-full xl:w-auto h-full min-h-[50px] md:min-h-[56px] bg-cream text-canvas rounded-[2rem] px-5 xl:px-6 font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
+                >
+                  <span>Vérifier les disponibilités</span>
+                  <span className="text-base leading-none mb-0.5">→</span>
+                </button>
+              </div>
             </div>
 
           </div>

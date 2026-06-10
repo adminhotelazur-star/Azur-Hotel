@@ -98,7 +98,7 @@ export default function Hero() {
                   />
                 </Field>
 
-                <Field label="Catégorie" className="border-b border-cream/10 xl:border-b-0">
+                <Field label="Catégorie" className="col-span-2 border-b border-cream/10 xl:border-b-0">
                   <div className="relative w-full">
                     <select
                       value={room}
@@ -118,7 +118,7 @@ export default function Hero() {
                   </div>
                 </Field>
 
-                <Field label="Adultes" className="border-b border-cream/10 xl:border-b-0">
+                <Field label="Adultes" className="xl:pr-4">
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
@@ -157,9 +157,6 @@ export default function Hero() {
                     </button>
                   </div>
                 </Field>
-
-                {/* Cellule vide pour maintenir la grille 2 colonnes */}
-                <div className="xl:hidden px-3 py-3" />
 
                 {/* Bouton mobile plein largeur */}
                 <div className="col-span-2 xl:hidden px-3 py-3 border-t border-cream/10">

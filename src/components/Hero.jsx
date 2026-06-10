@@ -50,7 +50,7 @@ export default function Hero() {
           style={{ animationDelay: "0.7s" }}
         >
           <p className="font-mono uppercase tracking-widest2 text-[9.5px] md:text-[10.5px] text-cream/65 mb-2 md:mb-3">
-            — Boutique · Casablanca
+            — Hôtel · Casablanca
           </p>
           <p className="editorial text-[clamp(18px,4vw,34px)] text-cream leading-[1.04]">
             L'âme de Casablanca,
@@ -98,18 +98,23 @@ export default function Hero() {
               </Field>
 
               <Field label="Catégorie">
-                <select
-                  value={room}
-                  onChange={(e) => setRoom(e.target.value)}
-                  className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-4"
-                >
-                  <option className="bg-canvas">Single Room</option>
-                  <option className="bg-canvas">Single Deluxe</option>
-                  <option className="bg-canvas">Double Room</option>
-                  <option className="bg-canvas">Double Deluxe</option>
-                  <option className="bg-canvas">Triple</option>
-                  <option className="bg-canvas">Twin</option>
-                </select>
+                <div className="relative w-full">
+                  <select
+                    value={room}
+                    onChange={(e) => setRoom(e.target.value)}
+                    className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-5"
+                  >
+                    <option className="bg-canvas">Single Room</option>
+                    <option className="bg-canvas">Single Deluxe</option>
+                    <option className="bg-canvas">Double Room</option>
+                    <option className="bg-canvas">Double Deluxe</option>
+                    <option className="bg-canvas">Triple</option>
+                    <option className="bg-canvas">Twin</option>
+                  </select>
+                  <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none w-3.5 h-3.5 text-cream/45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </Field>
 
               {/* Adultes - Boutons ronds plus petits (w-8 h-8 = 32px) */}

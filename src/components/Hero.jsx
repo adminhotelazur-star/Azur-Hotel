@@ -61,7 +61,7 @@ export default function Hero() {
 
         {/* Booking card overlay */}
         <div
-          className="absolute left-4 md:left-10 right-4 md:right-10 bottom-4 md:bottom-20 z-10 opacity-0 animate-fade-up"
+          className="absolute left-4 md:left-10 right-4 md:right-10 bottom-6 md:bottom-20 z-10 opacity-0 animate-fade-up"
           style={{ animationDelay: "1s" }}
         >
           {/* Main Bar Container - Padding réduit (p-1.5) pour gagner de la place */}
@@ -158,29 +158,17 @@ export default function Hero() {
                   </div>
                 </Field>
 
-                {/* Bouton mobile plein largeur */}
-                <div className="col-span-2 xl:hidden px-3 py-3 border-t border-cream/10">
+                {/* Bouton - mobile plein largeur, desktop inline */}
+                <div className="col-span-2 xl:col-span-1 px-3 py-3 border-t xl:border-t-0 border-cream/10 shrink-0">
                   <button
                     type="button"
                     onClick={handleSubmit}
-                    className="w-full bg-cream text-canvas rounded-[2rem] px-5 py-3 min-h-[50px] font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
+                    className="w-full xl:w-auto h-full min-h-[50px] md:min-h-[56px] bg-cream text-canvas rounded-[2rem] px-5 xl:px-6 font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
                   >
                     <span>Vérifier les disponibilités</span>
                     <span className="text-base leading-none mb-0.5">→</span>
                   </button>
                 </div>
-              </div>
-
-              {/* Bouton desktop latéral */}
-              <div className="hidden xl:block mt-2 xl:mt-0 xl:ml-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="w-full xl:w-auto h-full min-h-[50px] md:min-h-[56px] bg-cream text-canvas rounded-[2rem] px-5 xl:px-6 font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
-                >
-                  <span>Vérifier les disponibilités</span>
-                  <span className="text-base leading-none mb-0.5">→</span>
-                </button>
               </div>
             </div>
 

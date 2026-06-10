@@ -1,0 +1,219 @@
+/* Gilroy is self-hosted (see @font-face below). No Google fonts needed. */
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-cream font-sans antialiased;
+    font-weight: 300;
+    font-feature-settings: "ss01", "ss02", "liga", "kern";
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(60% 80% at 20% 0%, rgba(245, 220, 180, 0.05), transparent 70%),
+      radial-gradient(50% 60% at 80% 30%, rgba(255, 255, 255, 0.04), transparent 70%),
+      radial-gradient(80% 100% at 50% 120%, rgba(181, 87, 44, 0.05), transparent 70%),
+      linear-gradient(140deg, #14111866 0%, transparent 30%, #1b161eaa 60%, #14111866 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: #c4a661;
+    color: #141118;
+  }
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+  iframe {
+    border: 0;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: "Gilroy", system-ui, sans-serif;
+    font-weight: 300;
+    @apply uppercase text-[10.5px] text-cream/60;
+    letter-spacing: 0.32em;
+  }
+  .display-serif {
+    font-family: "Gilroy", system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+  .editorial {
+    font-family: "Gilroy", system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+  .body-serif {
+    font-family: "Gilroy", system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+
+  .canvas-sheen {
+    position: relative;
+  }
+  .canvas-sheen::before {
+    content: "";
+    position: fixed;
+    inset: -10%;
+    background:
+      conic-gradient(
+        from 220deg at 50% 50%,
+        rgba(242, 235, 221, 0) 0deg,
+        rgba(242, 235, 221, 0.045) 80deg,
+        rgba(242, 235, 221, 0) 160deg,
+        rgba(181, 87, 44, 0.04) 240deg,
+        rgba(242, 235, 221, 0) 320deg
+      );
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(20px);
+  }
+
+  .inset-card {
+    @apply rounded-card overflow-hidden relative;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 80px 120px -40px rgba(0, 0, 0, 0.6),
+      0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .pill-dark {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill bg-canvas/80 backdrop-blur-md border border-cream/15 text-cream uppercase tracking-widest2 text-[10.5px] hover:bg-cream hover:text-canvas transition-all duration-500;
+  }
+  .pill-light {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill bg-cream text-canvas uppercase tracking-widest2 text-[10.5px] hover:bg-clay hover:text-cream transition-all duration-500;
+  }
+  .pill-outline {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill border border-cream/30 text-cream uppercase tracking-widest2 text-[10.5px] hover:bg-cream hover:text-canvas hover:border-cream transition-all duration-500;
+  }
+  .pill-outline-dark {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-pill border border-canvas/30 text-canvas uppercase tracking-widest2 text-[10.5px] hover:bg-canvas hover:text-cream hover:border-canvas transition-all duration-500;
+  }
+
+  .hairline {
+    border: 1px solid rgba(242, 235, 221, 0.12);
+  }
+  .hairline-warm {
+    border: 1px solid rgba(196, 166, 97, 0.25);
+  }
+
+  .brushed::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.05) 35%, transparent 50%, rgba(255, 255, 255, 0.04) 65%, transparent 100%);
+    opacity: 0.6;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.7 0 0 0 0 0.6 0 0 0 0 0.4 0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  .vignette::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 40%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+  }
+}
+
+.font-mono {
+  font-family: "Gilroy", system-ui, sans-serif;
+  font-weight: 300;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .gold-gradient-text {
+    background: linear-gradient(180deg, #f3e6c7 0%, #c4a661 55%, #8e6a3d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .cream-gradient-text {
+    background: linear-gradient(180deg, #ffffff 0%, #f2ebdd 50%, #c4a661 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .clay-gradient-text {
+    background: linear-gradient(180deg, #e6b08a 0%, #b5572c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .scroll-mask-x {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .responsive-card {
+    min-height: 300px;
+    max-height: 80vh;
+    height: auto;
+  }
+  .responsive-card-tall {
+    min-height: 320px;
+    max-height: 85svh;
+    height: auto;
+  }
+  .min-touch {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .min-touch-y {
+    min-height: 44px;
+  }
+  .container-azur {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+  }
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}

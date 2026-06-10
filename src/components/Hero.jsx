@@ -64,100 +64,109 @@ export default function Hero() {
           className="absolute left-4 md:left-10 right-4 md:right-10 bottom-4 md:bottom-20 z-10 opacity-0 animate-fade-up"
           style={{ animationDelay: "1s" }}
         >
-          <div className="inset-card brushed bg-canvas/70 backdrop-blur-md px-3 py-3">
-            <div className="flex flex-col md:flex-row md:items-stretch gap-3">
-              <div className="hidden md:flex items-center gap-3 pl-4 pr-6 border-r border-cream/10">
-                <span className="text-clay text-2xl leading-none">✦</span>
-                <div>
-                  <p className="font-mono uppercase tracking-widest2 text-[9.5px] text-cream/55">Réservation directe</p>
-                  <p className="editorial italic text-cream text-lg leading-tight">Au meilleur prix.</p>
-                </div>
+          {/* Main Bar Container - Padding réduit (p-1.5) pour gagner de la place */}
+          <div className="inset-card brushed bg-canvas/80 backdrop-blur-md rounded-[2.5rem] p-1.5 md:p-2.5 flex flex-col xl:flex-row items-stretch shadow-2xl">
+            
+            {/* 1. Branding (Espaces réduits) */}
+            <div className="hidden xl:flex items-center gap-3 pl-4 pr-5 border-r border-cream/10 shrink-0">
+              <span className="text-clay text-xl leading-none">✦</span>
+              <div>
+                <p className="font-mono uppercase tracking-widest2 text-[9px] text-cream/55">Réservation</p>
+                <p className="editorial italic text-cream text-lg leading-tight mt-0.5">Directe</p>
               </div>
+            </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-cream/5 flex-1 rounded-[20px] overflow-hidden">
-                <Field label="Arrivée">
-                  <input
-                    type="date"
-                    value={arr}
-                    onChange={(e) => setArr(e.target.value)}
-                    className="w-full min-w-0 bg-transparent text-cream editorial text-sm md:text-base outline-none [color-scheme:dark]"
-                  />
-                </Field>
-                <Field label="Départ">
-                  <input
-                    type="date"
-                    value={dep}
-                    onChange={(e) => setDep(e.target.value)}
-                    className="w-full min-w-0 bg-transparent text-cream editorial text-sm md:text-base outline-none [color-scheme:dark]"
-                  />
-                </Field>
-                <Field label="Catégorie">
-                  <select
-                    value={room}
-                    onChange={(e) => setRoom(e.target.value)}
-                    className="w-full bg-transparent text-cream editorial text-sm md:text-lg outline-none appearance-none cursor-pointer"
+            {/* 2. Champs avec lignes de séparation verticales */}
+            <div className="flex-1 flex flex-col xl:flex-row divide-y xl:divide-y-0 xl:divide-x divide-cream/10 w-full min-w-0">
+              
+              <Field label="Arrivée" className="xl:pl-5">
+                <input
+                  type="date"
+                  value={arr}
+                  onChange={(e) => setArr(e.target.value)}
+                  className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
+                />
+              </Field>
+
+              <Field label="Départ">
+                <input
+                  type="date"
+                  value={dep}
+                  onChange={(e) => setDep(e.target.value)}
+                  className="block w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none [color-scheme:dark] [&::-webkit-calendar-picker-indicator]:ml-auto cursor-pointer"
+                />
+              </Field>
+
+              <Field label="Catégorie">
+                <select
+                  value={room}
+                  onChange={(e) => setRoom(e.target.value)}
+                  className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-4"
+                >
+                  <option className="bg-canvas">Single Room</option>
+                  <option className="bg-canvas">Single Deluxe</option>
+                  <option className="bg-canvas">Double Room</option>
+                  <option className="bg-canvas">Double Deluxe</option>
+                  <option className="bg-canvas">Triple</option>
+                  <option className="bg-canvas">Twin</option>
+                </select>
+              </Field>
+
+              {/* Adultes - Boutons ronds plus petits (w-8 h-8 = 32px) */}
+              <Field label="Adultes">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setAdults(Math.max(1, adults - 1))}
+                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
                   >
-                    <option className="bg-canvas">Single Room</option>
-                    <option className="bg-canvas">Single Deluxe</option>
-                    <option className="bg-canvas">Double Room</option>
-                    <option className="bg-canvas">Double Deluxe</option>
-                    <option className="bg-canvas">Triple</option>
-                    <option className="bg-canvas">Twin</option>
-                  </select>
-                </Field>
-                <Field label="Adultes">
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setAdults(Math.max(1, adults - 1))}
-                      className="min-touch w-7 h-7 md:w-7 md:h-7 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base leading-none shrink-0 hover:bg-cream/10 transition-colors"
-                      aria-label="Réduire le nombre d'adultes"
-                    >
-                      −
-                    </button>
-                    <span className="text-cream editorial text-base md:text-lg min-w-[1.5ch] text-center">{adults}</span>
-                    <button
-                      type="button"
-                      onClick={() => setAdults(adults + 1)}
-                      className="min-touch w-7 h-7 md:w-7 md:h-7 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base leading-none shrink-0 hover:bg-cream/10 transition-colors"
-                      aria-label="Augmenter le nombre d'adultes"
-                    >
-                      +
-                    </button>
-                  </div>
-                </Field>
-                <Field label="Enfants">
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setChildren(Math.max(0, children - 1))}
-                      className="min-touch w-7 h-7 md:w-7 md:h-7 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base leading-none shrink-0 hover:bg-cream/10 transition-colors"
-                      aria-label="Réduire le nombre d'enfants"
-                    >
-                      −
-                    </button>
-                    <span className="text-cream editorial text-base md:text-lg min-w-[1.5ch] text-center">{children}</span>
-                    <button
-                      type="button"
-                      onClick={() => setChildren(children + 1)}
-                      className="min-touch w-7 h-7 md:w-7 md:h-7 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base leading-none shrink-0 hover:bg-cream/10 transition-colors"
-                      aria-label="Augmenter le nombre d'enfants"
-                    >
-                      +
-                    </button>
-                  </div>
-                </Field>
-              </div>
+                    −
+                  </button>
+                  <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{adults}</span>
+                  <button
+                    type="button"
+                    onClick={() => setAdults(adults + 1)}
+                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                  >
+                    +
+                  </button>
+                </div>
+              </Field>
 
+              {/* Enfants - Boutons ronds plus petits */}
+              <Field label="Enfants" className="xl:pr-4">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setChildren(Math.max(0, children - 1))}
+                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                  >
+                    −
+                  </button>
+                  <span className="text-cream editorial text-[15px] min-w-[1.2ch] text-center">{children}</span>
+                  <button
+                    type="button"
+                    onClick={() => setChildren(children + 1)}
+                    className="w-8 h-8 rounded-full border border-cream/30 text-cream flex items-center justify-center text-base hover:bg-cream/10 transition-colors shrink-0"
+                  >
+                    +
+                  </button>
+                </div>
+              </Field>
+            </div>
+
+            {/* 3. Le bouton massif à droite - Paddings et textes réduits */}
+            <div className="mt-2 xl:mt-0 xl:ml-2 shrink-0">
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="md:w-auto bg-cream text-canvas rounded-[20px] px-4 py-3 min-h-[44px] font-mono uppercase tracking-widest2 text-[10px] md:text-[11px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2"
+                className="w-full xl:w-auto h-full min-h-[50px] md:min-h-[56px] bg-cream text-canvas rounded-[2rem] px-5 xl:px-6 font-mono uppercase tracking-widest2 text-[10px] hover:bg-clay hover:text-cream transition-colors duration-500 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <span>Vérifier les disponibilités</span>
-                <span>→</span>
+                <span className="text-base leading-none mb-0.5">→</span>
               </button>
             </div>
+
           </div>
         </div>
       </div>
@@ -188,13 +197,14 @@ export default function Hero() {
   );
 }
 
-function Field({ label, children }) {
+// Composant Field optimisé pour l'espace (px-3 au lieu de px-4)
+function Field({ label, children, className = "" }) {
   return (
-    <label className="flex flex-col px-2 py-2 md:px-3 md:py-3 bg-transparent hover:bg-canvas/30 transition-colors min-w-0">
-      <span className="font-mono uppercase tracking-widest2 text-[8px] md:text-[9.5px] text-cream/55 mb-1">
+    <div className={`flex flex-col justify-center px-3 py-3 xl:py-1.5 flex-1 min-w-0 ${className}`}>
+      <span className="font-mono uppercase tracking-widest2 text-[9px] text-cream/55 mb-1.5 truncate">
         {label}
       </span>
-      <div>{children}</div>
-    </label>
+      <div className="w-full flex items-center">{children}</div>
+    </div>
   );
 }

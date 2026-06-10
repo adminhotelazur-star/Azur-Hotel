@@ -24,12 +24,12 @@ export default function Hero() {
         {/* Background video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="src/assets/videos/hero.mp4"
+          src="/assets/videos/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
-          poster="src/assets/images/rooms/suite/suite-1.jpg"
+          poster="/assets/images/rooms/suite/suite-1.jpg"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-canvas/85 via-canvas/30 to-canvas/55" />
         <div className="absolute inset-0 vignette" />

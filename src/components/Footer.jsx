@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="px-8 md:px-14 py-16 grid grid-cols-12 gap-6 md:gap-10">
           <div className="col-span-12 md:col-span-4">
             <img
-              src="/logo-azur.png"
+              src="/assets/images/logo.png"
               alt="Hôtel Azur"
               className="h-12 md:h-16 w-auto mb-4"
             />

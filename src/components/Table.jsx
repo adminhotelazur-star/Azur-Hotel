@@ -37,12 +37,12 @@ export default function Table() {
         <div className="relative inset-card brushed min-h-[360px] md:min-h-[600px] max-h-[70svh] md:max-h-[680px] mb-6">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="src/assets/images/videos/rooftop-sunset.mp4"
+            src="/assets/videos/rooftop-sunset.mp4"
             autoPlay
             muted
             loop
             playsInline
-            poster="src/assets/images/rooftop/ambiance.jpg"
+            poster="/assets/images/rooftop/ambiance.jpg"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-canvas/85 via-canvas/10 to-transparent" />
 
@@ -79,7 +79,7 @@ export default function Table() {
           <Plate
             label="Le plat"
             tag="P-01"
-            img="src/assets/images/rooftop/plat.jpg"
+            img="/assets/images/rooftop/plat.jpg"
             span="md:col-span-5"
             h="min-h-[320px] md:min-h-[460px] max-h-[55svh] md:max-h-[520px]"
             quote="L'assiette du jour change avec le marché."
@@ -87,7 +87,7 @@ export default function Table() {
           <Plate
             label="Le dessert"
             tag="P-02"
-            img="src/assets/images/rooftop/dessert.jpg"
+            img="/assets/images/rooftop/dessert.jpg"
             span="md:col-span-4 md:mt-12"
             h="min-h-[320px] md:min-h-[460px] max-h-[55svh] md:max-h-[520px]"
             quote="Tiramisu maison, devant le soleil qui tombe."
@@ -95,7 +95,7 @@ export default function Table() {
           <Plate
             label="Le verre"
             tag="P-03"
-            img="src/assets/images/rooftop/boisson.jpg"
+            img="/assets/images/rooftop/boisson.jpg"
             span="md:col-span-3"
             h="min-h-[320px] md:min-h-[460px] max-h-[55svh] md:max-h-[520px]"
             quote="Cocktails signature."

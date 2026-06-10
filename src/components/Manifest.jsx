@@ -38,7 +38,7 @@ export default function Manifest() {
             tag="L'horizon"
             title="L'océan, sans intermédiaire."
             body="Pas de boulevard à traverser. Pas de route à longer. L'Atlantique commence là où finit notre terrasse."
-            img="src/assets/images/pool/piscine2.webp"
+            img="/assets/images/pool/piscine2.webp"
             offset="md:mt-0"
             span="md:col-span-4"
           />
@@ -47,7 +47,7 @@ export default function Manifest() {
             tag="La maison"
             title="Cinquante chambres, pas une de trop."
             body="Une maison à taille humaine. On vous reconnaît. On retient comment vous aimez votre café. On garde votre table."
-            img="src/assets/images/reception/reception.webp"
+            img="/assets/images/reception/reception.webp"
             offset="md:mt-16"
             span="md:col-span-4"
           />
@@ -56,7 +56,7 @@ export default function Manifest() {
             tag="L'humeur"
             title="Quatre étoiles, zéro raideur."
             body="Le service sait être présent sans se faire voir. La cuisine sait être française sans cesser d'être marocaine."
-            img="src/assets/images/rooftop/ambiance.jpg"
+            img="/assets/images/rooftop/ambiance.jpg"
             offset="md:mt-6"
             span="md:col-span-4"
           />

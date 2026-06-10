@@ -41,7 +41,7 @@ export default function Nav() {
       <a href="#top" className="fixed top-6 left-1/2 -translate-x-1/2 md:top-8 md:left-10 md:translate-x-0 z-40 group">
         <div className="flex items-center gap-4">
           <img
-            src="src/assets/images/logo.png"
+            src="/assets/images/logo.png"
             alt="Hôtel Azur"
             className="h-7 md:h-9 w-auto opacity-95 group-hover:opacity-100 transition-opacity duration-500"
           />

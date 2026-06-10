@@ -1,9 +1,9 @@
 export default function HeureBleue() {
   const moments = [
-    { hour: "06:42", title: "Le lever du soleil", body: "Sur la terrasse, café noir, mer plate. La ville dort encore.", img: "src/assets/images/rooms/suite/suite-4.jpg" },
-    { hour: "13:15", title: "L'apéritif piscine", body: "Citronnade glacée, olives noires, longue chaise au soleil. La piscine sur le toit, la Corniche en bas.", img: "src/assets/images/pool/piscine2.webp" },
-    { hour: "19:08", title: "L'heure dorée", body: "Le soleil tombe dans la baie vitrée du Rooftop. Vingt minutes de cinéma offert.", img: "src/assets/images/rooftop/dessert.jpg" },
-    { hour: "23:55", title: "Le dernier verre", body: "Banquette velours, lampe ambrée, vue qui ne dort jamais. Une habitude.", img: "src/assets/images/rooftop/ambiance.jpg" },
+    { hour: "06:42", title: "Le lever du soleil", body: "Sur la terrasse, café noir, mer plate. La ville dort encore.", img: "/assets/images/rooms/suite/suite-4.jpg" },
+    { hour: "13:15", title: "L'apéritif piscine", body: "Citronnade glacée, olives noires, longue chaise au soleil. La piscine sur le toit, la Corniche en bas.", img: "/assets/images/pool/piscine2.webp" },
+    { hour: "19:08", title: "L'heure dorée", body: "Le soleil tombe dans la baie vitrée du Rooftop. Vingt minutes de cinéma offert.", img: "/assets/images/rooftop/dessert.jpg" },
+    { hour: "23:55", title: "Le dernier verre", body: "Banquette velours, lampe ambrée, vue qui ne dort jamais. Une habitude.", img: "/assets/images/rooftop/ambiance.jpg" },
   ];
 
   return (

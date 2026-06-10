@@ -87,7 +87,7 @@ export default function CinematicFooter() {
                    transition: "transform 600ms cubic-bezier(.22,.61,.36,1)",
                  }}
             >
-              <img src="/logo-azur.png" alt="Hôtel Azur" className="h-10 md:h-20 w-auto mb-4 md:mb-5" />
+              <img src="/assets/images/logo.png" alt="Hôtel Azur" className="h-10 md:h-20 w-auto mb-4 md:mb-5" />
               <p className="font-mono uppercase tracking-widest2 text-[9px] md:text-[10px] text-clay mb-4 md:mb-6">
                 Hôtel · Casablanca · 4 ★
               </p>

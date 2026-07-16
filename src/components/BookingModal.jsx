@@ -110,7 +110,7 @@ export default function BookingModal({ isOpen, onClose }) {
   };
 
   const handleSubmit = () => {
-    const url = `https://azur.nozoul.ma/#/be/a00a49d0-42a9-4f65-b551-07fc158a6b31/book?period=${fmt(startDate)},${fmt(endDate)}&adults=${adults}&child=${children}`;
+    const url = `https://azur.nozoul.ma/#/be/a00a49d0-42a9-4f65-b551-07fc158a6b31/book`;
     window.open(url, "_blank", "noopener");
   };
 

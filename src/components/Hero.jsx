@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { buildNozoulUrl } from "../utils/nozoul";
 
 export default function Hero() {
   const today = new Date();
@@ -10,12 +11,32 @@ export default function Hero() {
   const [dep, setDep] = useState("");
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
+  const [childAges, setChildAges] = useState([]);
   const [room, setRoom] = useState("Single Room");
+
+  // Keep one age selector per child
+  useEffect(() => {
+    setChildAges((prev) => Array.from({ length: children }, (_, i) => prev[i] ?? "5"));
+  }, [children]);
+
+  function updateChildAge(index, value) {
+    setChildAges((prev) => {
+      const next = [...prev];
+      next[index] = value;
+      return next;
+    });
+  }
 
   function handleSubmit() {
     const depFinal = dep || fmt(new Date(new Date(arr).getTime() + 86400000));
-    const url = `https://azur.nozoul.ma/#/be/a00a49d0-42a9-4f65-b551-07fc158a6b31/book?period=${arr},${depFinal}&adults=${adults}&child=${children}`;
-    window.open(url, "_blank");
+    const url = buildNozoulUrl({
+      checkIn: arr,
+      checkOut: depFinal,
+      adults,
+      children,
+      childAges,
+    });
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -120,6 +141,26 @@ export default function Hero() {
                 </MobileField>
               </div>
 
+              {children > 0 && (
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  {childAges.map((age, i) => (
+                    <MobileField key={i} label={`Âge enfant ${i + 1}`}>
+                      <select
+                        value={age}
+                        onChange={(e) => updateChildAge(i, e.target.value)}
+                        className="w-full bg-transparent text-cream editorial text-[14px] outline-none appearance-none cursor-pointer"
+                      >
+                        {Array.from({ length: 13 }, (_, a) => a).map((a) => (
+                          <option key={a} className="bg-canvas" value={a}>
+                            {a} an{a > 1 ? "s" : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </MobileField>
+                  ))}
+                </div>
+              )}
+
               <button
                 type="button"
                 onClick={handleSubmit}
@@ -221,6 +262,28 @@ export default function Hero() {
               <Field label="Enfants" className="xl:pr-2">
                 <Counter value={children} min={0} onChange={setChildren} />
               </Field>
+
+              {children > 0 &&
+                childAges.map((age, i) => (
+                  <Field key={i} label={`Âge enf. ${i + 1}`}>
+                    <div className="relative w-full">
+                      <select
+                        value={age}
+                        onChange={(e) => updateChildAge(i, e.target.value)}
+                        className="w-full min-w-0 bg-transparent text-cream editorial text-[15px] outline-none appearance-none cursor-pointer pr-5"
+                      >
+                        {Array.from({ length: 13 }, (_, a) => a).map((a) => (
+                          <option key={a} className="bg-canvas" value={a}>
+                            {a} an{a > 1 ? "s" : ""}
+                          </option>
+                        ))}
+                      </select>
+                      <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none w-3.5 h-3.5 text-cream/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </Field>
+                ))}
 
               {/* CTA */}
               <div className="px-3 py-2 flex items-center shrink-0">
